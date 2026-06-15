@@ -1,0 +1,33 @@
+body {
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.artist-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.artist-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
+    border-color: #ffc107 !important;
+}
+
+.form-control:focus {
+    background-color: #1a1a1a !important;
+    color: white !important;
+    border-color: #ffc107 !important;
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.4);
+}
+
+.navbar-brand {
+    letter-spacing: 2px;
+}
+
+.card-img-top {
+    height: 350px;
+    width: 100%;
+    object-fit: contain;
+    background-color: #0d0d0d;
+}

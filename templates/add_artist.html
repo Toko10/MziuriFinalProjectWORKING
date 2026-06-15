@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} Rap Legends | Add Artist {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card bg-black border-warning p-4 shadow-lg">
+            <h1 class="text-center mb-4 text-warning" style="font-family: 'Permanent Marker';">ADD NEW LEGEND</h1>
+
+            {% for errors in form.errors.values() %}
+                <div class="alert alert-danger p-2 small">
+                    {% for error in errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Artist Poster / Photo</label>
+                    {{ form.image(class="form-control bg-dark text-light border-secondary", accept=".png, .jpg, .jpeg") }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Artist Name</label>
+                    {{ form.name(class="form-control bg-dark text-light border-secondary", placeholder="მაგ: Eminem") }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Career Start Year</label>
+                    {{ form.debut_year(class="form-control bg-dark text-light border-secondary", placeholder="მაგ: 1996") }}
+                </div>
+
+                <div class="d-grid mt-4">
+                    {{ form.submit(class="btn btn-warning fw-bold text-uppercase") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

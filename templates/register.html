@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} Rap Legends | Sign Up {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-5">
+        <div class="card bg-black border-warning p-4 shadow-lg">
+            <h1 class="text-center mb-4 text-warning" style="font-family: 'Permanent Marker';">JOIN THE CREW</h1>
+            <p class="text-center text-secondary small mb-4">შექმენი ახალი პროფილი და გახდი ჰიპ-ჰოპ ბაზის წევრი</p>
+
+            {% for errors in form.errors.values() %}
+                {% for error in errors %}
+                    <div class="alert alert-danger p-2 small">{{ error }}</div>
+                {% endfor %}
+            {% endfor %}
+
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Choose Username</label>
+                    {{ form.username(class="form-control bg-dark text-light border-secondary", placeholder="მაგ: BurgerBoy") }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Password (Min 6 chars)</label>
+                    {{ form.password(class="form-control bg-dark text-light border-secondary", placeholder="******") }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-secondary small">Confirm Password</label>
+                    {{ form.confirm_password(class="form-control bg-dark text-light border-secondary", placeholder="******") }}
+                </div>
+
+                <div class="d-grid mt-4">
+                    {{ form.register(class="btn btn-warning fw-bold text-uppercase") }}
+                </div>
+            </form>
+
+            <div class="text-center mt-3">
+                <p class="small text-secondary mb-0">უკვე გაქვს პროფილი? <a href="/login" class="text-warning">შედი აქედან</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

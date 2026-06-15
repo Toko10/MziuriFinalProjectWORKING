@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Underground Rappers | Home {% endblock %}
+
+{% block content %}
+<div class="text-center mb-5">
+    <h1 class="display-4 fw-bold" style="font-family: 'Permanent Marker';">Featured Artists</h1>
+    <p class="text-secondary">The Greatest of All Time, all in one place.</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for art in artist %}
+    <div class="col">
+        <div class="card h-100 bg-secondary bg-opacity-10 border-secondary artist-card">
+            <div class="position-relative">
+                <img src="/static/images/{{ art.image }}" class="card-img-top p-2 rounded-3" alt="{{ art.name }}" width = 400>
+                <span class="position-absolute top-0 start-0 m-3 badge bg-warning text-dark">{{ art.debut_year }}</span>
+            </div>
+            <div class="card-body text-center">
+                <h5 class="card-title fs-3 fw-bold text-warning">{{ art.name }}</h5>
+                <div class="mt-4">
+                    <a href="/artist/{{ art.id }}" class="btn btn-sm btn-outline-light w-100 mb-2">View Profile</a>
+                    {% if current_user.username == "admin" %} <div class="d-flex gap-2">
+                        <a href="/update_artist/{{ art.id }}" class="btn btn-sm btn-info flex-grow-1">Edit</a>
+                        <a href="/delete_artist/{{ art.id }}" class="btn btn-sm btn-danger flex-grow-1">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
