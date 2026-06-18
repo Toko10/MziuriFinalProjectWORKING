@@ -2,4 +2,4 @@ Flask
 Flask-WTF
 Flask-SQLAlchemy
 Flask-login
-Flask-Forms
+Flask-Form
